@@ -1,13 +1,72 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#addArea{
+  grid-area:adding;
+}
+#profilesListArea{
+  grid-area:profilesList;
+}
+#commitsFeed{
+  grid-area:feed;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#loginField{
+  grid-area: loginField;
+}
+
+#container{
+  display:grid;
+  grid-template-rows: 2;
+  grid-template-columns: 25% 75%;
+  grid-template-areas: 
+  "loginField feed"
+  "profilesList feed";
+}
+
+.submitForm{
+  display:grid;
+  grid-template-rows: 1;
+  grid-template-columns: 50% 30% 20%;
+  grid-template-areas: 
+  "textInputArea submitButtonArea submitMessageArea";
+}
+.textForm{
+  grid-area: textInputArea;
+}
+.submitButton{
+  grid-area: submitButtonArea;
+}
+.submitMessage{
+  grid-area: submitMessageArea;
+
+}
+
+.submitFormCommon{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+img{
+  width: 50px;
+  height: 50px;
+}
+
+.commitArea{
+  display:grid;
+  grid-template-rows: 2;
+  grid-template-columns: 25% 75%;
+  grid-template-areas: 
+  "commitAvatar commitTop"
+  "commitAvatar commitBottom";
+}
+
+.commitAvatar{
+  grid-area: commitAvatar;
+}
+
+.commitsTop{
+  grid-area: commitTop;
+}
+
+.commitsBottom{
+  grid-area: commitBottom;
 }
