@@ -17,7 +17,6 @@ class App extends React.Component {
     this.changeAxiosObject = this.changeAxiosObject.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
     this.changeLoginsList = this.changeLoginsList.bind(this)
-    this.i=1;
   }
   componentDidMount(){
     /*
@@ -40,9 +39,7 @@ class App extends React.Component {
   }
 
   changeLoginsList(list){
-    this.setState((state) => ({enteredLogins: list}), () => {
-      this.i=this.i+1;
-    });
+    this.setState({enteredLogins: list});
   }
 
   render(){
@@ -51,7 +48,7 @@ class App extends React.Component {
       <div id="container">
         <LoginOauthField axChanger={this.changeAxiosObject} onChangingField={this.handleLoginOauth} onValue={this.state.loginOuath}></LoginOauthField>
         <LoginsField changeLoginsList={this.changeLoginsList} loginsList={this.state.enteredLogins} onValue={this.state.login} onChangingField={this.handleLogin} axios={this.state.axiosInstance} ></LoginsField>
-        <CommitsHistory i={this.i} loginsList={this.state.enteredLogins}></CommitsHistory>
+        <CommitsHistory loginsList={this.state.enteredLogins}></CommitsHistory>
       </div>
     )
   }

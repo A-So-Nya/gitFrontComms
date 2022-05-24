@@ -1,29 +1,12 @@
 import React from "react";
 
 class CommitsHistory extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            loginsList : this.props.loginsList.slice(0),
-        };
-    };
-    
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps.loginsList)
-        this.setState((state) => ({
-            loginsList: nextProps.loginsList.slice(0)
-        }), () => {
-            console.log(this.state)
-            this.forceUpdate()
-        }) 
-      }
-
     render(){
         return(
             <div id="commitsFeed">
                 <ul>
                     {
-                    this.state.loginsList.slice(0).map((histEntry) => {
+                    this.props.loginsList.map((histEntry) => {
                         return (
                             Object.entries(histEntry).map((loginCommits) => {
                             return (

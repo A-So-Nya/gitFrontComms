@@ -4,10 +4,6 @@ class LoginsField extends React.Component{
     constructor(props){
         super(props);
         this.onLoginEnter = this.onLoginEnter.bind(this);
-        this.state = {
-            loginsList: this.props.loginsList,
-          };
-          
     }
     
     onLoginEnter(){
@@ -43,16 +39,12 @@ class LoginsField extends React.Component{
                 if(histCommit === undefined){
                     timeoutFade("This user hasn't got any repositories or commits");
                 } else {
-                    this.setState((state) => ({
-                        loginsList : state.loginsList.concat({
-                            [histCommit.login] : {
-                                avatarUrl : histCommit.avatarUrl,
-                                commits : histCommit.commits
-                            }
-                        })
-                    }), () => {
-                        this.props.changeLoginsList(this.state.loginsList)
-                    })
+                    this.props.changeLoginsList(this.props.loginsList.concat({
+                        [histCommit.login] : {
+                            avatarUrl : histCommit.avatarUrl,
+                            commits : histCommit.commits
+                        }
+                    }));
                 }
             })
         }
@@ -69,7 +61,7 @@ class LoginsField extends React.Component{
             <div>
                 <ul>
                 {
-                this.state.loginsList.map((user) => {
+                this.props.loginsList.map((user) => {
                     let login = Object.keys(user)[0];
                     return (<li key={login} className="userBlock">
                         <img src={user[login].avatarUrl}></img>
