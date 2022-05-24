@@ -55,14 +55,14 @@ class API {
             avatarUrl: responseParsed.avatarUrl,
             commits: [],
         };
-        responseParsed.repos.forEach((repoUrl) => {
-            this.axios.get(repoUrl).then((response) => {
+        await Promise.all(responseParsed.repos.map((repoUrl) => {
+            return this.axios.get(repoUrl).then((response) => {
                 response.data.forEach((commit) => {
                     finalResponse.commits.push(this.parseCommits(commit, responseParsed.login))
                 })
                 return finalResponse;
             })
-        })
+        }));
         return finalResponse;
     }
 
